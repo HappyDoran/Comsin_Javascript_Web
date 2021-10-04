@@ -1,0 +1,333 @@
+/* 
+html{
+    background-color: rgb(50, 50, 50);
+} 
+*/
+
+
+.mySlides {
+    display: none
+  }
+  
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 10000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 70%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: gray;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active,
+  .dot:hover {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+  
+    to {
+        opacity: 1
+    }
+  }
+  
+  @keyframes fade {
+    from {
+        opacity: .4
+    }
+  
+    to {
+        opacity: 1
+    }
+  }
+  
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+  
+    .prev,
+    .next,
+    .text {
+        font-size: 11px
+    }
+  }
+  
+  #title {
+    font-size: 40px;
+    font-family: 'IM_Hyemin-Bold' ;
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2');
+    text-decoration: none;
+    text-align: center;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    
+  }
+  
+  h4 {
+    margin-top: 0;
+  }
+  
+  .titlefont {
+    color : black;
+    font-family: 'IM_Hyemin-Bold' ;
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2');
+    text-decoration: none;
+    /* text-align: center; */
+    padding-bottom: 10px;
+  }
+  
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 30px;
+    text-align: center;
+    background-color: rgb(15, 151, 230);
+  }
+  
+  li {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 20%;
+    margin : 10px;
+  }
+  
+  li a,
+  .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100px;
+    transition: all 0.3s;
+  
+  }
+  
+  li a:hover,
+  .dropdown:hover .dropbtn {
+    background-color: #064e6b;
+    transform: scale(1.2);
+    border-radius: 20%;
+  }
+  
+  li.dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    margin-left: 4px;
+    margin-top : 5px;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px;
+    
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .footer {
+    border-top: 2px solid gray;
+  
+    padding: 10px;
+    text-align: center;
+    background: #f0f0f0;
+    margin-top: 30px;
+  }
+  
+  .login{
+    border-radius: 10px;
+    display: inline-block;
+    background-color: rgb(15, 151, 230);
+    margin-top: 5px;
+    margin-right: 5px;
+    padding : 15px;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
+    /* text-align: center; */
+    box-sizing: border-box;
+    box-shadow: 0px 8px 33px #999;
+    font-family: Verdana;
+    transition: all 0.3s;
+  }
+  
+  .login > a {
+    color: white;
+  }
+  
+  .login:hover{
+    transform:scale(1.2)
+  }
+  
+  .form{
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 500px;
+    padding: 40px;
+    margin:auto;
+    width: 400px;
+    box-shadow: 0px 8px 33px #999;
+  }
+  
+  input[type=text],input[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+  } 
+  input[type=submit] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgb(15, 151, 230);
+    color: white;
+    transition: all 0.3s;
+    border-radius: 10px;
+  }
+  
+  input[type=submit]:hover{
+    transform: scale(1.2);
+  }
+  
+  main {
+  
+    border-radius: 30px;
+    /* background-color: #f0f0f0; */
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 33px #999;
+    font-family: Verdana;
+  }
+  
+  
+  a {
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .description {
+    margin: 20px;
+    font-family: Verdana
+  }
+  
+  #description_img {
+    text-align: center;
+    max-width: 900px;
+    margin: 30px auto;
+    border-radius: 30px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 33px #999;
+  }
+  
+  .video {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    border-radius: 30px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 8px 33px #999;
+  }
+  
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-top: 50%;
+  
+  }
+  
+  iframe {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
+  
+  .dot_position {
+    text-align: center;
+    margin-top: 10px;
+  }

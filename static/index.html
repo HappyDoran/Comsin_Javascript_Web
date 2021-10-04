@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+  <title>Comsin-컴퓨터에 대한 모든 정보!</title>
+  <meta charset="utf-8">
+  <script>
+  var Links = {
+    setColor:function(color){
+      var alist = document.querySelectorAll('a');
+      var i = 0;
+      while(i < alist.length){
+        alist[i].style.color = color;
+        i = i + 1;
+      }
+    }
+  }
+  var Body = {
+    setColor:function (color){
+      document.querySelector('body').style.color = color;
+    },
+    setBackgroundColor:function (color){
+      document.querySelector('body').style.backgroundColor = color;
+    }
+  }
+  function nightDayHandler(self){
+    var target = document.querySelector('body');
+    if(self.value === 'night'){
+      Body.setBackgroundColor('rgb(50, 50, 50)');
+      Body.setColor('white');
+      self.value = 'day';
+
+      Links.setColor('white');
+    } else {
+      Body.setBackgroundColor('white');
+      Body.setColor('black');
+      self.value = 'night';
+
+      Links.setColor('white');
+    }
+  }
+  </script>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Comsin-컴퓨터에 대한 모든 정보!</title>
+ <a href = "/auth/login">login</a>
+ <link rel="shortcut icon" type="image/x-icon" href="./img/logo.png">
+ <link rel="stylesheet" href="style.css">
+ <a href="index.html">
+     <!-- <div class="titlefont">
+         <h1 style=" font-size : 75px; margin-bottom : 0px">COMSIN</h1>
+         <h4>컴퓨터에 대한 모든 정보를 담았다!</h4>
+     </div> -->
+     
+     <div id="title"><img src="./img/title_logo_2.png"></div>
+
+ </a>
+</head>
+<!-- <body>
+  <h1><a href="index.html">WEB</a></h1> -->
+  <!-- <input id="night_day" type="button" value="night" onclick="
+    nightDayHandler(this);
+  "> -->
+  <div class="grid">
+    <ul>
+        <li>
+            <a href="introduce.html">소개</a>
+        </li>
+        <li>
+          <a href="#about">정보글</a>
+        </li>
+        <li class="dropdown">
+            <a href="CPU.html" class="dropbtn">CPU</a>
+            <div class="dropdown-content">
+                <a href="#">CPU1</a>
+                <a href="#">CPU2</a>
+                <a href="#">CPU3</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="RAM.html" class="dropbtn">RAM</a>
+            <div class="dropdown-content">
+                <a href="#">RAM1</a>
+                <a href="#">RAM2</a>
+                <a href="#">RAM3</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="SSD.html" class="dropbtn">SSD</a>
+            <div class="dropdown-content">
+                <a href="#">SSD1</a>
+                <a href="#">SSD2</a>
+                <a href="#">SSD3</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="Graphic.html" class="dropbtn">Graphic-Card</a>
+            <div class="dropdown-content">
+                <a href="#">Graphic-Card1</a>
+                <a href="#">Graphic-Card2</a>
+                <a href="#">Graphic-Card3</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="Mainboard.html" class="dropbtn">Mainboard</a>
+            <div class="dropdown-content">
+                <a href="mb1.html">intel</a>
+                <a href="#">Mainboard2</a>
+                <a href="#">Mainboard3</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="POWER.html" class="dropbtn">Power</a>
+            <div class="dropdown-content">
+                <a href="#">power1</a>
+                <a href="#">power2</a>
+                <a href="#">power3</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="row">
+    <h2>제목같은 거</h2>
+    <div class="column">
+        <div class="card">
+            <div class="fakeimg" style="height:200px;">Image</div>
+            <a href="" title="이런 용어는 이러이러한 뜻이다">용어 설명</a>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    출처
+</div>
+</body>
+</html>
