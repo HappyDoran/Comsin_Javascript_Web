@@ -119,15 +119,24 @@ router.get('/', function (request, response) {
     }
 
 </script>
-` 
+    `;
   var list = template.list();
-  var html = template.HTML(title, list,
-    `${description}`,
-    '', auth.StatusUI(request, response),
-    auth.RegisterUI(request,response),
-    
-  );
-  response.send(html);
+  if(auth.IsOwner(request,response) == true){
+    var html = template.HTML(title, list,
+        `${description}`,
+        '', auth.StatusUI(request, response),``,
+        
+      );
+      response.send(html);
+  }
+  else{
+    var html = template.HTML(title, list,
+        `${description}`,
+        '', auth.StatusUI(request, response),auth.RegisterUI(request,response),
+        
+      );
+      response.send(html);
+  }
 });
 
 module.exports = router;

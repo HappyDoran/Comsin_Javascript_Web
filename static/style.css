@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;500&display=swap');
 /* html{
   background-image: "../static/img/title_logo_3.png";
+  width : 1080px;
 } */
 
 
@@ -169,9 +170,11 @@ h4 {
 }
 
 header{
+  /* width : 1080px; */
   height : 81px; 
   text-align: center;
   border-bottom: 2px solid rgb(77, 108, 139);
+  /* width : 1080px; */
   /* border-top : 1px solid gray; */
 }
 header h1{
@@ -190,7 +193,9 @@ header h1 a{
   background: url("../static/img/title_logo_3.png") no-repeat 0 0;
 }
 
-
+/* header .lnb {
+  width : 1080px;
+} */
 
 header .lnb li{
   display: inline-block;
@@ -198,6 +203,7 @@ header .lnb li{
 }
 
 header .lnb li a{
+  
   display: block;
   height : 81px;
   padding : 0 10px;
@@ -205,6 +211,7 @@ header .lnb li a{
   /* border : 1px solid red; */
   font-size : 15px;
   color : #333;
+  
   line-height :81px;
   /* 어느 부분이 클릭 됬는지 효과를 주길 바람 */
 }
@@ -223,7 +230,7 @@ header .lnb li a:hover span:after{
   position: absolute;
   left: 0;
   bottom : -9px;
-  width : 100%;
+  /* width : 100%; */
   height : 1px;
   background: #2d5b79;
 }
@@ -395,6 +402,8 @@ li.dropdown {
   transform:scale(1.2)
 }
 
+
+
 .form{
   background-color: #f0f0f0;
   /* border-radius: 20px; */
@@ -408,6 +417,21 @@ li.dropdown {
 
 .UI{
   margin-top : 10px;
+  /* border : 1px solid red; */
+}
+
+.update{
+  text-align: right;
+  padding-right : 50px;
+}
+
+.comment-form textarea {
+  display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    resize: none;
+    box-sizing: border-box;
 }
 
 input[type=text],input[type=password]{
@@ -415,11 +439,30 @@ input[type=text],input[type=password]{
   padding: 15px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: none;
+  /* border: none; */
   background-color: white;
   color: black;
   border-radius: 10px;
+  border : 1px solid black;
 } 
+
+.end {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: orange;
+  color: white;
+  transition: all 0.3s;
+  border-radius: 10px;
+}
+
+textarea {
+  rows :"200";
+  cols : "50";
+}
+
 input[type=submit] {
   width: 100%;
   padding: 12px 20px;
@@ -461,7 +504,21 @@ main {
   font-family: Verdana;
 }
 
+.comment{
 
+    /* border-radius: 30px; */
+  /* background-color: rgb(157,213,255); */
+  margin-top: 10px;
+  padding-left : 50px;
+  padding-right : 50px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  text-align: left;
+  box-sizing: border-box;
+  /* box-shadow: 0px 8px 33px #999; */
+  font-family: Verdana;
+  /* border :1px solid red; */
+}
 a {
   /* text-align: center; */
   text-decoration: none;
@@ -554,6 +611,7 @@ a {
 .banner {
   padding : 55px 0;
   background-color: rgb(206, 234, 238);
+  /* width : 1080px; */
 }
 
 .banner ul{
@@ -578,82 +636,125 @@ a {
   color : #000;
 }
 
-footer{
-  /* background : #383f43; */
-  padding : 10px;
+footer {
+  padding-top : 60px;
 }
 
-footer.top > div{
-  width : 1180px;
+footer .top{
+  /* padding-top : 100px; */
+  background : #383f43;
+  /* border: 1px solid red; */
+}
+
+footer .top > div {
+  width : 1080px;
   margin : 0 auto;
   padding : 13px 0;
-
 }
 
-footer .top > div ul{
+footer .top > div ul {
   float : left;
-  margin : 0px;
+  position : relative;
+  top : 0px;
 }
 
 footer .top > div ul li {
   float : left;
   position : relative;
-  padding : 0 0px 0 0;
-  margin-left : 50px;
+  padding : 0 9px 0 0 ;
 }
 
 footer .top > div ul li :after {
-  content : "";
+  content: "";
   position : absolute;
   right : 9px;
   top : 50%;
-  margin-top : -4px;
   width : 1px;
   height : 8px;
-  /* background : #70767a; */
+  margin-top : -4px;
+  background: #70767a;
 }
 
-footer .top > div ul li a {
-  color : black;
-  font-size: 13px;
-  line-height : 30px;
-  transform: none;
+footer .top > div ul li :last-child :after{
+  display: none;
+}
+
+footer .top > div ul li a{
+  color : #fff;
+  font-size : 13px;
+  line-height: 45px;
+  /* border : 1px solid red; */
 }
 
 footer .top > div div {
   float : right;
-} 
-
-footer .top > div div p {
-  display : inline-block;
-  width : 242px;
-  height : 0px;
-  /* background : #2a3033; */
-  color : black;
-  text-align: center;
-  line-height: -4px;
-  font-size: 13px;
-  padding-top : 10px;
-  /* border : 1px solid red; */
+  padding-top : 14px;
 }
 
-footer .top > div div p strong{
-  padding :0 0 0 5px; 
-  font-size : 20px;
-  /* border : 1px solid red; */
+footer .top > div div p {
+  display: inline-block;
+  width : 242px;
+  height : 45px;
+  background: #2a3033;
+  color : #fff;
+  text-align: center;
+  line-height: 45px;
+  font-size: 13px;
+}
+
+footer .top > div div p strong {
+  padding : 0 0 0 15px;
+  font-size: 20px;
 }
 
 footer .top > div div select {
   padding : 0 0 0 21px;
-  width : 200px;
-  height : 45px;
-  /* color : #191919; */
-  font-size : 12px;
+  width: 200px;
+  height :44px;
+  color : #191919;
+  font-size: 12px;
   box-sizing: border-box;
-  /* border: 1px solid red; */
-  vertical-align: 0px;
+  border: none;
+  vertical-align: 3px;
 }
 
+footer .btm {
+  padding : 40px 0 44px;
+  background: #4c5459;
+  text-align: center;
+}
+
+footer .btm p {
+  display: inline-block;
+  width : 150px;
+  height : 51px;
+  background: url("img/title_logo.png") no-repeat;
+  color : transparent;
+}
+
+footer .btm li {
+  display: inline-block;
+  position : relative;
+  padding :0 10px;
+  color : #fff;
+  font-size: 14px;
+}
+
+footer .btm li :after {
+  content: "";
+  position: absolute;
+  right : 0;
+  top : 50%;
+  margin-top : -4px;
+  width : 1px;
+  height: 8px;
+  background: #70767a;
+}
+
+footer .btm address {
+  font-size: 14px;
+  color :#fff;
+}
 
 .publish{
   /* background-color: rgb(157,213,255); */
@@ -702,8 +803,9 @@ iframe {
 
 .message{
   /* border : 1px solid red; */
+  margin-top : 5px;
   padding : 7px;
-  background : rgb(0,30,255);
+  background : rgb(67,89,252);
   color : white;
   text-align: center;
   border-radius: 10px;
@@ -728,25 +830,32 @@ table.type07 {
 table.type07 thead {
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
-  background: rgb(77, 108, 139);
+  background: rgb(67,89,252);
 }
 table.type07 thead th {
-  padding: 10px;
+  padding-left: 50px;
+  padding : 10px;
   font-weight: bold;
   vertical-align: top;
   color: #fff;
+  /* border: 1px solid; */
 }
 table.type07 tbody th {
   width: 400px;
-  padding: 10px;
+  /* padding: 10px; */
   font-weight: bold;
+  padding-top : 10px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
-  background: #fcf1f4;
+  /* background: #fcf1f4; */
+  margin-top : 100px;
+  /* border: 1px solid; */
 }
 table.type07 td {
   width: 100px;
-  padding: 10px;
+  padding-left: 50px;
+  padding : 10px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
+  /* border: 1px solid red; */
 }

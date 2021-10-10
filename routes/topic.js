@@ -10,86 +10,62 @@ var sanitizeHtml = require('sanitize-html');
 var compression = require('compression')
 var auth = require('../lib/auth')
 var shortid = require('shortid');
-
 var db = require('../lib/db');
 var shortid = require('shortid');
 
-let today = new Date();
-let year = today.getFullYear(); // 년도
-let month = today.getMonth() + 1;  // 월
-let date = today.getDate();  // 날짜
-let day = today.getDay();  // 요일
-let hours = today.getHours(); // 시
-let minutes = today.getMinutes();  // 분
-
-var authData = {                   //사용자의 정보를 담은 객체
-  email: `kirin2211@naver.com`,
-  password: `tjehddnjs14`,   //해쉬와 비밀번호 암호화 작업 필요
-  nickname: `Tuna`
-}
-
 router.get('/login', function (request, response) {
-  var title = 'Login';
-  // var list = template.list();
-  var html = template.HTML(title, ` `, `
+  var title = 'LOG-IN';
+  var description = `
   <div class = "form">
-  <h1>LOG-IN</h1>
+  <h1>${title}</h1>
   <form action="/login_process" method="post" style = "text-align : center">
   <p class = "UI"><input type="text" name="email" placeholder="E-mail"></p>
-  <p class = "UI">
-    <input type = "password" name = "password" placeholder = "Password">
-  </p>
-  <p class = "UI">
-    <input type="submit" value = "로그인">
-  </p>
-</form></div>
-    ` , '');
+  <p class = "UI"><input type = "password" name = "password" placeholder = "Password"></p>
+  <p class = "UI"><input type="submit" value = "로그인"></p>
+  </form></div>
+    `;
+  var html = template.HTML(title, ``, description, ``, auth.StatusUI(request, response), auth.RegisterUI(request, response));
   response.send(html);
 });
 
 router.get('/login/wrong', function (request, response) {
-  var title = 'Login';
-  // var list = template.list();
-  var html = template.HTML(title, ` `, `
+  var title = 'LOG-IN';
+  var description = `
   <div class = "form">
-  <h1>LOG-IN</h1>
+  <h1>${title}</h1>
   <p class = "message">ID 혹은 비밀번호를 다시 입력해주세요!</p>
   <form action="/login_process" method="post" style = "text-align : center">
   <p class = "UI"><input type="text" name="email" placeholder="E-mail"></p>
-  <p class = "UI">
-    <input type = "password" name = "password" placeholder = "Password">
-  </p>
-  <p class = "UI">
-    <input type="submit" value = "로그인">
-  </p>
-</form></div>
-    ` , '');
+  <p class = "UI"><input type = "password" name = "password" placeholder = "Password"></p>
+  <p class = "UI"><input type="submit" value = "로그인"></p>
+  </form></div>
+    `;
+  var html = template.HTML(title, ``, description, ``, auth.StatusUI(request, response), auth.RegisterUI(request, response));
   response.send(html);
 });
 
 router.get('/register', function (request, response) {
-  var title = 'register';
-  // var list = template.list();
-  var html = template.HTML(title, ` `, `
+  var title = 'REGISTER';
+  var description = `
   <div class = "form">
-  <h1>REGISTER</h1>
+  <h1>${title}</h1>
   <form action="/register_process" method="post" style = "text-align : center">
   <p class = "UI"><input type="text" name="email" placeholder="E-mail"></p>
   <p class = "UI"><input type = "password" name = "password" placeholder = "Password"></p>
   <p class = "UI"><input type = "password" name = "password2" placeholder = "Confirm Password"></p>
   <p class = "UI"><input type="text" name="displayName" placeholder="Display Name"></p>
   <p class = "UI"><input type="submit" value = "회원 가입"></p>
-</form></div>
-    `, '');
+  </form></div>
+    `;
+  var html = template.HTML(title, ``, description, ``, auth.StatusUI(request, response), auth.RegisterUI(request, response));
   response.send(html);
 });
 
 router.get('/register/wrong', function (request, response) {
-  var title = 'register';
-  // var list = template.list();
-  var html = template.HTML(title, ` `, `
+  var title = 'REGISTER';
+  var description = `
   <div class = "form">
-  <h1>REGISTER</h1>
+  <h1>${title}</h1>
   <p class = "message">비밀번호가 일치하지 않습니다!</p>
   <form action="/register_process" method="post" style = "text-align : center">
   <p class = "UI"><input type="text" name="email" placeholder="E-mail"></p>
@@ -97,23 +73,25 @@ router.get('/register/wrong', function (request, response) {
   <p class = "UI"><input type = "password" name = "password2" placeholder = "Confirm Password"></p>
   <p class = "UI"><input type="text" name="displayName" placeholder="Display Name"></p>
   <p class = "UI"><input type="submit" value = "회원 가입"></p>
-</form></div>
-    `, '');
+  </form></div>
+    `;
+  var html = template.HTML(title, ``, description, ``, auth.StatusUI(request, response), auth.RegisterUI(request, response));
   response.send(html);
 });
 
 router.get('/logout', function (request, response) {
   request.session.destroy(function (err) {
-    // request.logout();
-    // request.session.save(function () {
     response.redirect('/');
   });
 });
 
 router.get('/Mainboard_Intel', function (request, response) {
   var title = 'COMSIN';
-  var description = `<section class="content">
-  <h1 "class="titlefont">Intel</h1>
+  var list = template.list();
+  var description = `
+  <h1 "class="titlefont" 
+  style = "font-size : 2rem; margin-left : 50px; color : black;">Intel</h1>
+  <section class="content">
   <div class="slideshow-container">
       <main>
           <div class="description">
@@ -228,48 +206,65 @@ for (i = 0; i < dots.length; i++) {
 slides[slideIndex - 1].style.display = "block";
 dots[slideIndex - 1].className += " active";
 }
-
 </script>`;
-  var list = template.list();
-  var html = template.HTML(title, list,
-    description, '', auth.StatusUI(request, response)
-  );
-  response.send(html);
+  if (auth.IsOwner(request, response) == true) {
+    var html = template.HTML(title, list,
+      description, ``, auth.StatusUI(request, response), ``
+    );
+    response.send(html);
+  }
+  else {
+    var html = template.HTML(title, list,
+      description, ``, auth.StatusUI(request, response), auth.RegisterUI(request, response)
+    );
+    response.send(html);
+  }
 });
 
 router.get('/QnA', function (request, response) {
   var title = 'COMSIN';
   var QnAlist = template.QNAlist(request.list);
+  var list = template.list();
   var description = `
   <h1 "class="titlefont" 
   style = "font-size : 2rem; margin-left : 50px; color : black;">게시판</h1>
   <div class="slideshow-container">
       <main>
+      <div class="description">
           ${QnAlist}
+      </div>
       </main>
-  </div>
-  <!-- <aside>혹시 몰라서 비워둔 부분</aside> -->
-
-</div>
-</body>
-`;
-  var list = template.list();
-  var html = template.HTML(title, list,
-    description, `<a style = "float: right; padding-right : 40px; font-size : 15px;" href="/QnA/create">글 작성</a>`, auth.StatusUI(request, response)
-  );
-  response.send(html);
+  </div>`;
+  if (auth.IsOwner(request, response) == true) {
+    var html = template.HTML(title, list,
+      description, `<a style = "float: right; padding-right : 40px; font-size : 15px;" href="/QnA/create">글 작성</a>`,
+      auth.StatusUI(request, response), ``
+    );
+    response.send(html);
+  }
+  else {
+    var html = template.HTML(title, list,
+      description, `<a style = "float: right; padding-right : 40px; font-size : 15px;" href="/login"  onclick="alert('로그인을 하신 후 이용해 주시기 바랍니다.');">글 작성</a>`,
+      auth.StatusUI(request, response), auth.RegisterUI(request, response)
+    );
+    response.send(html);
+  }
 });
 
 router.get('/QnA/create', function (request, response) {
   var title = 'WEB - create';
   var list = template.list();
   var html = template.HTML(title, list, `
-      <form action="/create_process" method="post">
-        <p><input type="text" name="title" placeholder="title"></p>
-        <p><textarea name="description" placeholder="description"></textarea></p>
-        <p><input type="submit"></p>
-      </form>
-    `, ``,auth.StatusUI(request, response));
+          <div class = "description" style = "padding : 30px; padding-top : 0px">
+          <div style = "padding : 20px; text-align : left">
+          <form action="/create_process" method="post">
+          <p class = "UI"><input type="text" name="title" placeholder="제목"></p>
+          <p class = "UI"><textarea name="description" style="width:100%; height:100%;" placeholder="본문을 남겨주세요!"></textarea></p>
+          <p class = "UI"><input type="submit" value = "완료" style = "width : 10%; float : right; margin-right : 15px;"></p>
+          </form>
+          </div>
+          </div>
+    `, ``, auth.StatusUI(request, response), ``);
   response.send(html);
 });
 
@@ -294,40 +289,101 @@ router.post('/create_process', function (request, response) {
     description: description,
     user_id: request.user.id,
     displayName: request.user.displayName,
-    today : today,
-    year : year,
-    month : month,
-    date : date,
-    day : day,  // 요일
-    hours : hours, // 시
-    minutes : minutes  // 분
+    today: today,
+    year: year,
+    month: month,
+    date: date,
+    day: day,  // 요일
+    hours: hours, // 시
+    minutes: minutes  // 분
   }).write();
   response.redirect(`/QnA/${id}`);
 });
 
-router.get('/update/:pageId', function (request, response) {
-  var filteredId = path.parse(request.params.pageId).base;
-  fs.readFile(`data/${filteredId}`, 'utf8', function (err, description) {
-    var title = request.params.pageId;
-    var list = template.list(request.list);
-    var html = template.HTML(title, list,
-      ``,
-      `<a href="/create">create</a> <a href="/update/${title}">update</a>`
-    );
+router.post('/comment_process', function (request, response) {
+  var post = request.body;
+  console.log(post);
+  var description = post.description;
+  console.log(description);
+  var topic_id = post.title;
+  // fs.writeFile(`data/${title}`, description, 'utf8', function (err) {
+  //   response.redirect(`/${title}`);
+  // });
+  var id = shortid.generate();
+  let today = new Date();
+  let year = today.getFullYear(); // 년도
+  let month = today.getMonth() + 1;  // 월
+  let date = today.getDate();  // 날짜
+  let day = today.getDay();  // 요일
+  let hours = today.getHours(); // 시
+  let minutes = today.getMinutes();  // 분
+  db.get('comment').push({
+    id: id,
+    description: description,
+    topic_id: topic_id,
+    user_id: request.user.id,
+    displayName: request.user.displayName,
+    today: today,
+    year: year,
+    month: month,
+    date: date,
+    day: day,  // 요일
+    hours: hours, // 시
+    minutes: minutes  // 분
+  }).write();
+  response.redirect(`/QnA/${topic_id}`);
+});
+
+router.get('/QnA/update/:pageId', function (request, response) {
+    var topic = db.get('topics').find({id : request.params.pageId}).value();
+    var title =topic.title;
+    var description = topic.description;
+    console.log(description);
+    var list = template.list();
+    var html = template.HTML(title, list, `
+    <div class = "description" style = "padding : 30px; padding-top : 0px">
+    <div style = "padding : 20px; text-align : left">
+    <form action="/update_process" method="post">
+    <p class = "UI"><input type="text" name="title" placeholder="제목" value = "${title}"></p>
+    <p class = "UI"><textarea name="description"  value = ${description} style="width:100%; height:100%;" placeholder="본문을 남겨주세요!"></textarea></p>
+    <p class = "UI"><input type="submit" value = "완료" style = "width : 10%; float : right; margin-right : 15px;"></p>
+    </form>
+    </div>
+    </div>
+    `, ``, auth.StatusUI(request, response), ``);
     response.send(html);
-  });
 });
 
 router.post('/update_process', function (request, response) {
   var post = request.body;
-  var id = post.id;
   var title = post.title;
   var description = post.description;
-  fs.rename(`data/${id}`, `data/${title}`, function (error) {
-    fs.writeFile(`data/${title}`, description, 'utf8', function (err) {
-      response.redirect(`/${title}`);
-    })
-  });
+  // fs.writeFile(`data/${title}`, description, 'utf8', function (err) {
+  //   response.redirect(`/${title}`);
+  // });
+  var id = shortid.generate();
+  let today = new Date();
+  let year = today.getFullYear(); // 년도
+  let month = today.getMonth() + 1;  // 월
+  let date = today.getDate();  // 날짜
+  let day = today.getDay();  // 요일
+  let hours = today.getHours(); // 시
+  let minutes = today.getMinutes();  // 분
+  db.get('topics').push({
+    id: id,
+    title: title,
+    description: description,
+    user_id: request.user.id,
+    displayName: request.user.displayName,
+    today: today,
+    year: year,
+    month: month,
+    date: date,
+    day: day,  // 요일
+    hours: hours, // 시
+    minutes: minutes  // 분
+  }).write();
+  response.redirect(`/QnA/${id}`);
 });
 
 router.post('/delete_process', function (request, response) {
@@ -339,29 +395,75 @@ router.post('/delete_process', function (request, response) {
   });
 });
 
-
 router.get('/QnA/:pageId', function (request, response, next) {
   var topic = db.get('topics').find({ id: request.params.pageId }).value();
   var sanitizedTitle = sanitizeHtml(topic.title);
   var sanitizedDescription = sanitizeHtml(topic.description, {
     allowedTags: ['h1']
   });
+  // var loger = db.get('users').find({id:id}).value();
   var user = db.get('users').find({ id: topic.user_id }).value();
   var list = template.list();
-  var html = template.HTML(sanitizedTitle, list,
-    `
-    <h2 class = "titlefont" style = "font-size : 1.5rem; margin-left : 50px; color : black;">${sanitizedTitle}</h2>
-    <p style = "margin-left : 50px">${user.displayName}</p>
-    <p style = "margin-left : 50px">${topic.year+ '.'+ topic.month + '.' + topic.date + '   ' + topic.hours+ ':'+ topic.minutes}</p>
-        <main>
-        <div class = "description" style = "padding : 30px; padding-top : 0px">
-        ${sanitizedDescription}
-        </div>
-        </main>
-        `,
-    ``,auth.StatusUI(request, response)
-  );
-  response.send(html);
-
+  var QnAlist = template.QNAlist(request.list);
+  var comment = template.Commentlist(request.comment, topic.id);
+  // console.log(topic.id); //페이지 아이디
+  // console.log(user.id); // 작성자 코드
+  // console.log(topic.user_id); //글쓴 사람 코드
+  if (auth.IsOwner(request, response) == true) {
+    // console.log(request.user.displayName);
+    var html = template.HTML(sanitizedTitle, list,
+      `
+      <h2 class = "titlefont" style = "font-size : 1.5rem; margin-left : 50px; color : black;">${sanitizedTitle}</h2>
+      <p style = "margin-left : 50px">${user.displayName}</p>
+      <p style = "margin-left : 50px">${topic.year + '.' + topic.month + '.' + topic.date + '   ' + topic.hours + ':' + topic.minutes}</p>
+          <main>
+          <div class = "description" style = "padding : 30px; padding-top : 0px">
+          <div style = "padding : 20px; text-align : left">
+          ${sanitizedDescription}
+          </div>
+          </div>
+          </main>
+          <div class = "comment">
+          ${comment}
+          <form action="/comment_process" method="post">
+          <p class = "UI"><textarea name="description" placeholder="댓글 작성란" style="width:100%; height:15%;"></textarea></p>
+          <p class = "UI"><input type="text" name="title" placeholder="제목" value = "${topic.id}" style = "display : none;"></p>
+          <p class = "UI"><input type="submit" value = "완료" style = "width : 10%; float : right; margin-right : 15px;"></p>
+          </form>
+          </div>
+         <div style = "padding : 20px; text-align : left">
+          ${QnAlist}
+          </div>
+          `,
+      ``, auth.StatusUI(request, response), ``
+    );
+    response.send(html);
+  }
+  else {
+    var html = template.HTML(sanitizedTitle, list,
+      `
+      <h2 class = "titlefont" style = "font-size : 1.5rem; margin-left : 50px; color : black;">${sanitizedTitle}</h2>
+      <p style = "margin-left : 50px">${user.displayName}</p>
+      <p style = "margin-left : 50px">${topic.year + '.' + topic.month + '.' + topic.date + '   ' + topic.hours + ':' + topic.minutes}</p>
+          <main>
+          <div class = "description" style = "padding : 30px; padding-top : 0px">
+          <div style = "padding : 20px; text-align : left">
+          ${sanitizedDescription}
+          </div>
+          </div>
+          </main>
+          <div class = "comment">
+          ${comment}
+          <p class = "UI" style = "font-weight : bold; font-size : 13px;" >댓글을 작성하려면 로그인 해주세요.</p>
+          <div style = "padding : 20px; text-align : left">
+          ${QnAlist}
+          </div>
+          </div>
+          `,
+      ``, auth.StatusUI(request, response), auth.RegisterUI(request, response)
+    );
+    response.send(html);
+  }
 });
+
 module.exports = router;

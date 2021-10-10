@@ -112,6 +112,7 @@ var passport = require('./lib/passport')(app);
 
 app.get('*', function (request, response, next) {
     request.list = db.get('topics').value();
+    request.comment = db.get('comment').value();
     next();
 });
 
